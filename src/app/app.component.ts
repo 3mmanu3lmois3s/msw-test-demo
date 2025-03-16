@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.http.get<any>('/api/heroes').subscribe((data) => {
+    this.http.get<any>('api/heroes').subscribe((data) => {
       // URL RELATIVA
       console.log('Data from API:', data);
       this.heroes = data;
