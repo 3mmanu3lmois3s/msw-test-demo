@@ -18,14 +18,12 @@ const handlers = [
 const worker = setupWorker(...handlers);
 
 if ('serviceWorker' in navigator) {
-  // Registra el service worker manualmente
   navigator.serviceWorker
-    .register('/msw-test-demo/mockServiceWorker.js', {
-      scope: '/msw-test-demo/',
-    })
+    // Usa ruta relativa en lugar de "/msw-test-demo/mockServiceWorker.js"
+    .register('./mockServiceWorker.js', { scope: './' })
     .then((registration) => {
       console.log('Service Worker registrado exitosamente:', registration);
-      // Una vez registrado, iniciar MSW
+      // Una vez registrado, inicia MSW
       return worker.start();
     })
     .then(() => {
