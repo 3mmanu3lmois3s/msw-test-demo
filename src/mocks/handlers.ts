@@ -2,7 +2,7 @@
 import { http, HttpResponse } from 'msw';
 
 export const handlers = [
-  http.get('/api/heroes', () => {
+  http.get('api/heroes', () => {
     //  RUTA RELATIVA
     return HttpResponse.json([
       { id: 11, name: 'Dr Nice' },
