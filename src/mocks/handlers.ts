@@ -1,9 +1,9 @@
 // src/mocks/handlers.ts
-import { http, HttpResponse } from 'msw'; // Importa desde 'msw'
+import { http, HttpResponse } from 'msw';
 
 export const handlers = [
-  http.get('/msw-test-demo/api/heroes', () => {
-    // Ruta ABSOLUTA
+  http.get('/api/heroes', () => {
+    //  RUTA RELATIVA
     return HttpResponse.json([
       { id: 11, name: 'Dr Nice' },
       { id: 12, name: 'Narco' },
