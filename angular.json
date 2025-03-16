@@ -101,7 +101,7 @@
               {
                 "glob": "mockServiceWorker.js",
                 "input": "src/mocks/",
-                "output": "/"
+                "output": "."
               }
             ],
             "styles": ["src/styles.css"],
