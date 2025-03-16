@@ -38,7 +38,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "docs",
+            "outputPath": "dist/msw-test/browser",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -46,14 +46,17 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/mockServiceWorker.js"
+              {
+                "glob": "mockServiceWorker.js",
+                "input": "src/",
+                "output": "/"
+              }
             ],
             "styles": ["src/styles.css"],
             "scripts": []
           },
           "configurations": {
             "production": {
-              "baseHref": "/msw-test-demo/",
               "budgets": [
                 {
                   "type": "initial",
@@ -101,8 +104,8 @@
               "src/assets",
               {
                 "glob": "mockServiceWorker.js",
-                "input": "src/mocks/",
-                "output": "."
+                "input": "src/",
+                "output": "/"
               }
             ],
             "styles": ["src/styles.css"],
