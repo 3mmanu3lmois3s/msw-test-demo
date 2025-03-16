@@ -53,6 +53,7 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "/msw-test-demo/",
               "budgets": [
                 {
                   "type": "initial",
