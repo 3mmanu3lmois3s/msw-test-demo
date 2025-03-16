@@ -1,4 +1,3 @@
-// src/app/app.component.ts
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
@@ -21,7 +20,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.http.get<any>('/api/heroes').subscribe((data) => {
-      // Ahora es relativa
+      // URL RELATIVA
       console.log('Data from API:', data);
       this.heroes = data;
     });
