@@ -20,11 +20,10 @@ export class AppComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.http
-      .get<any>('https://3mmanu3lmois3s.github.io/msw-test-demo/api/heroes')
-      .subscribe((data) => {
-        console.log('Data from API:', data);
-        this.heroes = data;
-      });
+    this.http.get<any>('/api/heroes').subscribe((data) => {
+      // Ahora es relativa
+      console.log('Data from API:', data);
+      this.heroes = data;
+    });
   }
 }

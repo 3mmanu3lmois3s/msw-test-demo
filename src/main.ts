@@ -1,22 +1,23 @@
-// src/main.ts
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
 import { provideHttpClient } from '@angular/common/http';
-import { setupWorker } from 'msw/browser'; // Importa solo setupWorker
-import { handlers } from './mocks/handlers'; // Importa los handlers
+import { worker } from './mocks/browser';
+import { importProvidersFrom } from '@angular/core'; // Importa esto
+import { APP_BASE_HREF } from '@angular/common'; // Importa esto
 
-const worker = setupWorker(...handlers);
-
-// Arranca el worker *incondicionalmente* y usa una ruta *absoluta*
 worker
   .start({
     serviceWorker: {
-      url: '/msw-test-demo/mockServiceWorker.js', //  RUTA ABSOLUTA
+      url: '/msw-test-demo/mockServiceWorker.js',
     },
   })
   .then(() => {
-    console.log('[MSW] Worker started (ultra-simplified, absolute path)'); // Mensaje personalizado
+    console.log('[MSW] Worker started (simplified, absolute path)');
     bootstrapApplication(AppComponent, {
-      providers: [provideHttpClient()],
+      providers: [
+        provideHttpClient(),
+        importProvidersFrom([]),
+        { provide: APP_BASE_HREF, useValue: '/msw-test-demo/' }, // Añade esto
+      ],
     }).catch((err) => console.error(err));
   });
